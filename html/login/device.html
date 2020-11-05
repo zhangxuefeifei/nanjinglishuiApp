@@ -1,0 +1,645 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width" />
+    <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+    <title>登录页面</title>
+    <link rel="stylesheet" type="text/css" href="../../css/api.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/style.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/aui1.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/vant.css" />
+    <style>
+        html,
+        body {
+          width: 100%;
+          height: 100%;
+          background: transparent;
+        }
+
+        .logo {
+            margin: 0 auto;
+            width: 50.93vw;
+            height: 45.59vw;
+            /*background: url(../../image/login/cqlogo.png);*/
+            background-repeat: no-repeat;
+            background-size: 100%
+        }
+
+        .logoDiv {
+            width: 100%;
+            padding: 35.53vw 0 0 0;
+            /*margin: 20vw auto;*/
+        }
+
+        .row {
+            width: 80vw;
+            height: 44px;
+            border-radius: 1.57rem;
+            line-height: 44px;
+            margin: 0 auto;
+            margin-bottom: 1.07rem;
+            border: solid 1px rgba(255, 255, 255, 0.6);
+            /*padding: 0 4.8vw;*/
+            padding: 0;
+            /* zxf 2020-6-15*/
+            display: -webkit-flex;
+            display: flex;
+            -webkit-align-items: center;
+            align-items: center;
+            -webkit-justify-content:space-between;
+            justify-content: space-between;
+        }
+
+        .userRow {
+            width: 75vw;
+            height: 44px;
+            line-height: 44px;
+            margin: 0 auto;
+            margin-bottom: 1.07rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+            color: rgba(255, 255, 255, 0.6);
+            padding: 0 4.8vw;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-align-items: center;
+            align-items: center;
+            -webkit-justify-content: space-between;
+            justify-content: space-between;
+        }
+
+        .input {
+            /*width: calc( 100% - 5.07vw);*/
+            margin-right: 10px;
+            height: 6.2vw;
+            border: none;
+            outline: none;
+            font-size: 4.26vw;
+            font-weight: normal;
+            font-stretch: normal;
+            letter-spacing: 0.36vw;
+            color: #fefefe !important;
+            opacity: 0.6;
+            line-height: 6.2vw;
+            /*color: rgba(255, 255, 255, 0.6);*/
+        }
+
+        input::-webkit-input-placeholder {
+            color: #fefefe !important;
+            opacity: 0.6;
+        }
+        /*zxf 2020-6-15*/
+
+        input[type="text"].input,
+        input[type="number"].input,
+        input[type="password"].input {
+            width: 80%!important;
+            margin-left: 1rem;
+        }
+
+        .loginDiv {
+            width: 100%;
+            height: 37vh;
+        }
+
+        .userSelect {
+            width: 5.07vw;
+            height: 2.67vw;
+            background: url(../../image/login/userSelect.png);
+            background-repeat: no-repeat;
+            background-size: 100%;
+            -webkit-transition: 200ms;
+            transition: 200ms;
+            position: absolute;
+            top: 3.54vw;
+            left: 3.5vw;
+        }
+
+        .active {
+            -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+        }
+
+        .hidePassword {
+            width: 5.07vw;
+            height: 3.07vw;
+            background: url(../../image/login/hidePassword.png);
+            background-repeat: no-repeat;
+            background-size: 100%;
+        }
+
+        .showPassword {
+            width: 5.07vw;
+            height: 3.07vw;
+            background: url(../../image/login/showPassword.png);
+            background-repeat: no-repeat;
+            background-size: 100%;
+        }
+
+        .login {
+            width: 80vw;
+            height: 44px;
+            line-height: 44px;
+            margin: 0 auto;
+            margin-bottom: 1.07rem;
+            font-size: 0.8rem;
+            font-weight: normal;
+            font-stretch: normal;
+            letter-spacing: 0.36vw;
+            color: #4c87b9;
+            border: 1px solid #fff;
+            border-radius: 1.57rem;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-align-items: center;
+            align-items: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            background-color: #fff;
+        }
+
+        .self {
+            padding: 0 10vw;
+            height: 4vw;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        #self-p {
+            width: 4vw;
+            height: 4vw;
+            display: inline-block;
+            border: none;
+            outline: none;
+            /*margin-right: 1.87vw;*/
+        }
+
+        .uncheck {
+            background: url(../../image/login/unchecked.png) no-repeat center;
+            background-size: 100% 100%;
+        }
+
+        .checked {
+            background: url(../../image/login/checked.png) no-repeat center;
+            background-size: 100% 100%;
+        }
+
+        .self label {
+            font-size: 0.7rem;
+            font-weight: normal;
+            font-stretch: normal;
+            letter-spacing: 0.32vw;
+            color: rgba(255, 255, 255, 0.4);
+            /*vertical-align: text-top;
+        vertical-align: text*/
+        }
+
+        .self a {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.7rem;
+            font-weight: normal;
+            font-stretch: normal;
+            letter-spacing: 0.32vw;
+            cursor: pointer;
+        }
+
+        .left {
+            float: left;
+            width: 26.94vw;
+            height: 4vw;
+            line-height: 4vw;
+        }
+
+        .right {
+            float: right;
+            height: 4vw;
+            line-height: 4vw;
+        }
+
+        .otherLogin {
+            width: 100%;
+            height: 16px;
+            line-height: 16px;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-align-items: center;
+            align-items: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            padding-top: 15%;
+        }
+
+        .otherLogin label {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.3);
+            vertical-align: text-top;
+        }
+
+        .leftLine {
+            float: left;
+            width: 24%;
+            height: 1px;
+            margin-right: 6.9%;
+            background: url(../../image/login/xian.png) no-repeat center;
+            background-size: 100% 1px;
+        }
+
+        .rightLine {
+            float: right;
+            width: 24%;
+            height: 1px;
+            margin-left: 6.9%;
+            background: url(../../image/login/xian.png) no-repeat center;
+            background-size: 100% 100%;
+        }
+
+        .icon {
+            height: auto;
+            padding: 0;
+            margin-top: 8%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .icon .list {
+            float: left;
+            width: 39px;
+            height: 39px;
+            margin: 0 15px;
+        }
+
+        .icon .list:first-child {
+            margin: 0 15px 0 0;
+        }
+
+        .icon .list:last-child {
+            margin: 0 0 0 15px;
+        }
+
+        .list img {
+            width: 100%;
+        }
+
+        .footer {
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding-bottom: 2%;
+            width: 100%;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.3);
+            text-align: center;
+        }
+
+        .loginedUsers {
+            min-height: 10rem;
+            max-height: 15rem;
+            overflow-y: auto;
+        }
+
+        .close {
+            width: 20px;
+            height: 20px;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-align-items: center;
+            align-items: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+        }
+
+        .notchilk {
+            pointer-events: none;
+        }
+
+        .icon_box {
+            width: 20%;
+            height: 100%;
+            /*position: relative;*/
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .account_login {
+            width: 0.7rem;
+            height: 0.7rem;
+            float: left;
+            margin-right: 0.6rem;
+        }
+
+        [v-cloak] {
+            display: none;
+        }
+        .organizationBox{
+          width: 80vw;
+          margin: 0 auto;
+          padding: 0;
+          display: -webkit-flex;
+          display: flex;
+          -webkit-align-items: center;
+          align-items: center;
+          -webkit-justify-content:space-center;
+          justify-content: center;
+          -webkit-flex-direction: column;
+          flex-direction: column;
+          margin-top: -1.07rem;
+        }
+        .organizationBox li{
+          color: #fff;
+          margin: 0;
+          padding: 5px 0;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+          width: 100%;
+          text-align: center;
+          color: rgba(255, 255, 255, 0.3);
+        }
+        /*.organizationBox li:last-child{
+          border-bottom: 0;
+        }*/
+    </style>
+</head>
+
+<body>
+    <div id="loginPage" v-cloak>
+        <div class="logoDiv">
+            <div class="logo">
+            </div>
+        </div>
+        <div class="row">
+            <input v-model='userList.machineCode' class="input" readonly placeholder="设备标识码" type="text"/>
+            <div class="icon_box" style='color:#fff' tapmode @click="getdeviceID">
+                获取
+            </div>
+        </div>
+        <div class="row">
+            <input v-model='userList.mobile' class="input"  placeholder="手机号" type="number"/>
+        </div>
+        <div class="row">
+            <input v-model="userList.loginPassword" class="input" :type="isShowOrHidePassword == true ? 'text':'password'" placeholder="密码">
+            <div class="icon_box" tapmode @click="isShowOrHidePassword=!isShowOrHidePassword">
+                <i :class="isShowOrHidePassword == true ? 'showPassword' : 'hidePassword'"></i>
+            </div>
+        </div>
+        <div class="row">
+            <input v-model='userList.trueName' class="input"  placeholder="姓名" type="text"/>
+        </div>
+        <div class="row">
+            <input v-model='organization' class="input" readonly  placeholder="请选择行政组织" type="text"/>
+            <div class="icon_box" tapmode @click="isShoworganization=!isShoworganization">
+                <i class="aui-iconfont aui-icon-down" style="color:#fff" v-show='!isShoworganization'></i>
+                <i class="aui-iconfont aui-icon-top" style="color:#fff" v-show='isShoworganization'></i>
+            </div>
+
+        </div>
+        <ul class='organizationBox' v-show='isShoworganization'>
+          <li v-for='item in organizationList' :key='item.orgType' @click='selectorg(item),isShoworganization=!isShoworganization'>{{item.orgName}}</li>
+        </ul>
+        <div class="login" tapmode @click="Login()" v-show='!isShoworganization'>
+            立即注册
+        </div>
+        <div style='width: 80vw;text-align:right;margin: 0 auto;color: #fefefe' tapmode @click="toLogin()" v-show='!isShoworganization'>
+            登录
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/common.js"></script>
+<script type="text/javascript" src="../../script/zepto.js"></script>
+<script type="text/javascript" src="../../script/remote.js"></script>
+<script type="text/javascript" src="../../script/moment.js"></script>
+<script type="text/javascript" src="../../script/vue/fastclick.min.js"></script>
+<script type="text/javascript" src="../../script/vue/vue.min.js"></script>
+<script type="text/javascript" src="../../script/vue/vant.min.js"></script>
+<script type="text/javascript">
+    var checkbox = $api.byId('self-p');
+    apiready = function() {
+        Origami.fastclick(document.body) //消除vue的ios端点击延迟
+        api.addEventListener({
+            name: 'changedFontSize'
+        }, function(ret, err) {
+            if (ret) {
+                changeFontSize();
+            }
+        });
+        api.parseTapmode();
+        api.addEventListener({
+            name: 'keyback'
+        }, function(ret, err) {
+            if(ret){
+              api.closeWin();
+            }
+        });
+        logoShow();
+        //  监听是否设置了服务器
+        // 监听是否修改了服务器地址
+        api.addEventListener({
+            name: 'changeApiUrl'
+        }, function(ret, err) {
+            if (ret) {
+                var serviceAddress = $api.getStorage('apiUrl');
+                loginVue.apiUrl = 'http://' + serviceAddress;
+            }
+        });
+        initVue();
+    };
+    function initVue() {
+        window.loginVue = new Vue({
+            el: '#loginPage',
+            data: {
+                apiUrl: '', //设置服务器页面返回的地址
+                isShowOrHidePassword:false,//是否显示密码
+                isShoworganization:false,//是否显示行政机构
+                userList:{
+                  loginPassword:'',
+                  mobile:'',
+                  tenantId:'',
+                  orgId:'',
+                  loginAccount:'',
+                  machineCode:'',
+                  trueName:''
+                },
+                organization:'',
+                organizationList:[]
+            },
+            watch: {
+
+            },
+            methods: {
+                //注册设备，请求接口
+                Login: function() {
+                  let _this = this;
+                      if(!_this.userList.machineCode){
+                        api.toast({
+                            msg: '设备号不能为空，请点击获取',
+                            duration: 2000,
+                            location: 'top'
+                        });
+                        return false;
+                      }
+
+                      if(!_this.userList.mobile || !(/^1[3456789]\d{9}$/.test(_this.userList.mobile))){
+                        api.toast({
+                            msg: '手机号码格式错误',
+                            duration: 2000,
+                            location: 'top'
+                        });
+                        return false;
+                      }
+                      _this.userList.loginAccount=_this.userList.mobile;
+                      if(!_this.userList.loginPassword || !(/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,12}$/.test(_this.userList.loginPassword))){
+                        api.toast({
+                            msg: '请输入至少6位,数字加字母的密码',
+                            duration: 2000,
+                            location: 'top'
+                        });
+                        return false;
+                      }
+                      if(!_this.userList.trueName || !(/^[\u4E00-\u9FA5]{1,10}$/.test(_this.userList.trueName))){
+                        api.toast({
+                            msg: '真实姓名必须由汉字组成',
+                            duration: 2000,
+                            location: 'top'
+                        });
+                        return false;
+                      }
+                      if(!_this.userList.tenantId || !_this.userList.orgId){
+                        api.toast({
+                            msg: '请选择行政组织',
+                            duration: 2000,
+                            location: 'top'
+                        });
+                        return false;
+                      }
+                      CQfnPost('/api/services/app/User/APPUserReg',_this.userList,true,function(ret,err){
+                            // console.log(JSON.stringify(ret));
+                            if(ret.success){
+                                api.toast({
+                                    msg:'提交成功，等待审核通过',
+                                    duration: 2000,
+                                    location: 'top'
+                                });
+                                setTimeout(function(){
+                                    api.closeWin()
+                                },2000)
+                            }else {
+                              api.toast({
+                                  msg:ret.error.message,
+                                  duration: 2000,
+                                  location: 'top'
+                              });
+                            }
+                      })
+
+                },
+                // 获取手机识别码
+                getdeviceID(){
+                  this.userList.machineCode=api.deviceId;
+                },
+                //获取组织信息
+                getOrganizationList(){
+                  let _this=this;
+                  CQfnGet('/api/services/app/Information/GetOrgagencyForTenant',{},false,function(ret,err){
+                        if(ret.success){
+                          _this.organizationList=ret.result
+                        }else {
+                          api.toast({
+                              msg:err.msg,
+                              duration: 2000,
+                              location: 'top'
+                          });
+                        }
+                  })
+
+                },
+                // 选择的信息
+                selectorg(obj){
+                    this.organization=obj.orgName;
+                    this.userList.tenantId=obj.tenantId;
+                    this.userList.orgId=obj.id;
+                },
+                // 去登录
+                toLogin(){
+                    api.closeWin()
+                }
+
+            },
+            mounted: function() {
+              // 获取租户信息
+                this.getOrganizationList()
+              // 获取设备表时码
+                this.getdeviceID()
+            }
+        })
+    }
+
+    //获取租户code，取账号@后的字符
+    function getTenantCode(data) {
+        var str = data;
+        var num = str.indexOf("@");
+        if (num != -1) {
+            str = str.substr(num + 1);
+            return str;
+        } else {
+            return "";
+        }
+    }
+
+    //获取用户名，取账号@前的字符
+    function getUsername(data) {
+        var str = data;
+        var num = str.indexOf("@");
+        if (num != -1) {
+            str = str.substring(0, num);
+            return str;
+        } else {
+            return "";
+        }
+    }
+
+    var isValued = false;
+    var recentUser = {
+        account: "",
+        password: ""
+    };
+
+    // UserSheets 表添加数据
+    function insertUserInfoToTable(userName, password) {
+        var db = api.require("db");
+        var nowTime = new Date();
+        nowTime = moment(nowTime).format('YYYY-MM-DD HH:mm:ss');
+        var SheetId = 0;
+        db.selectSql({
+            name: 'Wsdatabase',
+            sql: 'select Id from UserSheets order by Id desc limit 1'
+        }, function(ret, err) {
+            if (ret.status) {
+                if (ret.data.length > 0) {
+                    SheetId = ret.data[0].Id;
+                    SheetId++;
+                }
+            }
+        });
+        db.selectSql({
+            name: 'Wsdatabase',
+            sql: 'SELECT * FROM UserSheets where username ="' + userName + '"'
+        }, function(ret, err) {
+            if (ret.status) {
+                if (ret.data.length == 0) {
+                    db.executeSql({
+                        name: 'Wsdatabase',
+                        sql: 'insert into UserSheets (Id,username,userPassword,loginTime,isDelete) values (' + SheetId + ',"' + userName + '","' + password + '","' + nowTime + '",0)'
+                    }, function(ret, err) {
+                        if (ret.status) {
+                            //  console.log( JSON.stringify( ret ) );
+                        }
+                    });
+                }
+            }
+        });
+
+    }
+</script>
+
+</html>
